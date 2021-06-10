@@ -1,50 +1,123 @@
+/* IMPORT */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 /* CSS */
 
-html { font-family: "Roboto"; background: linear-gradient(0deg, rgb(19, 19, 19), rgb(0, 11, 46)); height: 100% }
-.wrap { height: 100%; width: auto; }
+/* Intergrate the font family globally */
+html { font-family: "Roboto"; height: 100%; color: #FFFFFF; text-align: justify; overflow-x: hidden; }
+
+/* Background */
+.bg {
+    top: 0;
+    left: 0;
+    z-index: -10000;
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    background: linear-gradient(0deg, rgb(0, 11, 46), rgb(19, 19, 19));
+}
 
 /* TOP-BAR */
-.header {
+
+/* The actual top bar */
+.top-bar {
+    /* Just to make sure the element is positioned at the top */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    width: auto;
-    height: 65px;
     position: fixed;
+
+    /* Elelement visuals */
+    width: auto;
+    height: 10%;
+    z-index: 10000;
     background: #000000;
     box-shadow: 0 0 20px #000000;
 }
 
-.navbar-fixed {
-    align-items: center;
-    height: 100%;
+/* So we can have a margin, let's have the width of our container */
+/* -10% on both sides */
+.top-bar .content {
     width: 90%;
-    display: flex;
-    padding-left: 50px;
-    padding-right: 50px;
+    height: 100%;
+    padding: 0 10% 0 10%;
+    text-decoration: none;
 }
 
-.navbar-brand {
+/* The brand container */
+.top-bar .brand {
+    height: 100%;
+    width: min-content;
+    text-decoration: none;
+    
+    display: flex; /* This, combined with align-items: center, makes it's content align at the center. This, however, does inherit to the children */
+    align-items: center;
+}
+
+/* Change text visualizations */
+.top-bar .brand #text {
+    font-size: 25px;
+    font-weight: 900;
+    color: #FFFFFF;
     padding-left: 10px;
     text-decoration: none;
-    font-weight: 900;
-    font-size: 25px;
-    color: #FFFFFF;
-    transition: color .5s, text-shadow .5s;
+    transition: color .5s ease-in, text-shadow .5s ease-in; /* Think of the transition property as a way we can tween objects without calling @keyframes */
 }
 
-.navbar-brand:hover {
-    color: rgb(0, 120, 218);
-    text-shadow: 0 0 10px rgb(0, 68, 124);
-}
-
-.navbar-logo {
+/* Edit the icon visualizations */
+.top-bar .brand #logo {
     height: 70%;
     width: auto;
-    padding: 2px;
-    border-radius: 100%;
+    border-radius: 100%; /* This property behaves similarly to UICorners */
     background: rgb(12, 12, 12);
+    transition: box-shadow .5s ease-in;
+}
+
+/* These are the goals of the transitions */
+.brand:hover #logo { box-shadow: 0 0 10px rgb(0, 68, 124); }
+.brand:hover #text { color: rgb(0, 120, 218); text-shadow: 0 0 10px rgb(0, 68, 124); }
+
+/* ACTUAL CONTENT */
+
+/* The invisible container for our content */
+.body {
+    top: 10%;
+    width: 100%;
+    height: 90%;
+    position: absolute;
+}
+
+/* The margin of the content */
+.content {
+    width: 80%;
+    height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+/* A Box/Section of text */
+.box {
+    margin: 2em 5% 2em 5%;
+    padding: 0.5em 2.5% 0.5em 2.5%;
+    background-color: rgb(14, 14, 14);
+    position: relative;
+    top: 1.5em
+}
+
+/* EDIT TEXT APPEARANCES */
+
+/* Set the font for headers to be Roboto Black */
+h1, h2, h3, h4, h5, h6 { font-weight: 900; }
+
+a[href], p[href] {
+    font-weight: 900;
+    text-decoration: underline;
+    color: rgb(68, 171, 255);
+    transition: color .5s ease-in, text-shadow .5s ease-in;
+}
+
+a[href]:hover, p[href]:hover {
+    text-shadow: 0 0 10px rgb(0, 68, 124);
 }
