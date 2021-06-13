@@ -1,0 +1,207 @@
+/* Import Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+/* Open Sans Font Map */
+/* 300 | Light        */
+/* 400 | Regular      */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,500;0,700;0,900;1,100;1,500;1,700;1,900&display=swap');
+
+/* Roboto Font Map */
+/* 100 | Thin      */
+/* 500 | Medium    */
+/* 700 | Bold      */
+/* 900 | Black     */
+
+/* Behind The Sscenes edits */
+
+* { padding: 0; margin: 0; }
+html, body { height: 100vh;  max-width: 100%; }
+
+/* ScrollBar */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0.25em rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(0, 126, 175, 0.5);
+    transition: background-color .2s ease-in;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 183, 255, 0.5);
+}
+
+/* Background */
+
+.back-ground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+        0deg,
+        rgb(0, 11, 46),
+        rgb(27, 27, 27)
+    );
+    height: 100vh;
+    width: 100vw;
+    z-index: -1000;
+}
+
+/* TopBar*/
+
+.top-bar {
+    width: 100vw;
+    height: 10vh;
+    background-color: #000;
+    box-shadow: 0 0 10px #000;
+    position: fixed; /* Make sure it sticks to the top at all times */
+    top: 0;
+    left: 0;
+    z-index: 1030;
+    /* Set the .top-bar to have all it's items postioned at it's center */
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-bar .content { /* make sure the elements have margins */
+    width: 70%;
+    height: 100%;
+}
+
+.top-bar .brand {
+    float: left;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* Text visuals */
+    font-weight: 900;
+    font-size: 5vh;
+    text-decoration: none;
+    color: inherit;
+    transition: color .2s ease-in, text-shadow .2s ease-in; /* Think of the 'transition' property just like the TweenInfo.new() function */
+}
+
+.top-bar .logo {
+    display: block;
+    background-image: url('/assets/textures/web-icon.svg');
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    height: 7vh;
+    width: 7vh;
+    background-size: 100% 100%;
+    background-color: rgb(37, 37, 37);
+    border-radius: 100%;
+    margin-right: 1vw;
+    transition: box-shadow .2s ease-in;
+}
+
+/* These are the property goals */
+.top-bar .brand:hover { color: rgb(0, 68, 128); text-shadow: 0 0 10px rgb(0, 68, 124); }
+.top-bar .brand:hover .logo { box-shadow: 0 0 10px rgb(0, 68, 124); }
+
+/* Footer */
+
+.footer {
+    position: relative;
+    /*top: 10vh;*/
+    height: 10vh;
+    width: 100vw;
+    background-color: #000;
+    box-shadow: 0 0 10px #000;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.footer .content { /* Make sure it's like .top-bar .content */
+    width: 70%;
+    height: 100%;
+    /* Make it's descendants placed in the center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer .text {
+    font-size: 1.1em;
+    text-align: center;
+    font-weight: 500;
+}
+
+.footer .text a[href] { /* Make sure it has a different style */
+    font-family: "Open Sans";
+    font-weight: 300;
+    color: inherit;
+}
+
+.footer .text a[href]:hover { /* remove other unwanted properties */
+    text-decoration: underline;
+    text-shadow: none;
+    color: inherit;
+}
+
+/* Wrap */
+
+.wrap {
+    height: 90vh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    top: 10vh;
+}
+
+/* Content */
+
+.body {
+    /* Make sure it sticks to the bottom */
+    position: relative;
+    min-height: 80vh;
+    height: auto;
+    max-width: 100vw;
+    /* Text */
+    text-align: justify;
+    /* Display */
+    display: flex;
+    justify-content: center;
+}
+
+.body .content {
+    width: 70%;
+    min-height: 100%;
+    margin-top: 6.5vh;
+}
+
+.content-box {
+    background-color: rgb(28, 28, 28);
+    /* Make it so that it has space between thetext */
+    padding-left: 0.65em;
+    padding-right: 0.65em;
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+    border-radius: 0.4em; /* borer-radius acts like UICorners */
+    /* Make it so that it has space between other elements */
+    margin-bottom: 6.5vh;
+}
+
+/* Text */
+
+* { font-family: "Roboto"; color: #FFF; }
+
+ul, ol { list-style-position: inside; } /* Make sure the lists' bullets stay within their respected container  */
+
+h1, h1, h3, h4, h5, h6 { font-weight: 900; }
+
+a[href], p[href] { text-decoration: none; color: rgb(0, 157, 219); }
+
+.content-box .indent { text-indent: 3.25em; }
