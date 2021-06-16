@@ -105,7 +105,7 @@ html, body { height: 100vh;  max-width: 100%; }
 }
 
 /* These are the property goals */
-.top-bar .brand:hover { color: rgb(0, 68, 128); text-shadow: 0 0 10px rgb(0, 68, 124); }
+.top-bar .brand:hover { color: rgb(0, 117, 219); text-shadow: 0 0 10px rgb(0, 68, 124); }
 .top-bar .brand:hover .logo { box-shadow: 0 0 10px rgb(0, 68, 124); }
 
 /* Footer */
@@ -139,6 +139,7 @@ html, body { height: 100vh;  max-width: 100%; }
 }
 
 .footer .text a[href] { /* Make sure it has a different style */
+    text-decoration: none;
     font-family: "Open Sans";
     font-weight: 300;
     color: inherit;
@@ -202,6 +203,52 @@ ul, ol { list-style-position: inside; } /* Make sure the lists' bullets stay wit
 
 h1, h1, h3, h4, h5, h6 { font-weight: 900; }
 
-a[href], p[href] { text-decoration: none; color: rgb(0, 157, 219); }
+.body a[href]:not(.social-media) { text-decoration: none; color: rgb(0, 157, 219); transition: text-shadow .2s ease-in; }
+.body a[href]:not(.social-media):hover { text-decoration: underline; text-shadow: 0 0 .25em rgb(0, 157, 219); }
 
-.content-box .indent { text-indent: 3.25em; }
+.body .indent { text-indent: 3.25em; }
+
+/* Any libk to another website and/or window */
+.body a[href^="http"]:not(.social-media)::after {
+    content: '';
+    height: auto;
+    background-image: url('/assets/textures/external-link-icon.svg');
+    background-size: 100% 100%;
+    padding-right: 1.35em;
+}
+.body a[target="_blank"]:not(.social-media)::after {
+    content: '';
+    height: auto;
+    background-image: url('/assets/textures/external-link-icon.svg');
+    background-size: 100% 100%;
+    padding-right: 1.35em;
+}
+
+/* Any Social Media Link */
+.body .social-media {
+    font-weight: 900;
+    text-decoration: none;
+    transition: color .2s ease-in;
+    color: rgb(148, 148, 148);
+    padding: .5em 0 .5em 0;
+}
+.body .social-media::before {
+    content: '';
+    background-image: var(--media-icon-link);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: .5em 2em .5em 0;
+    margin-right: .25em;
+}
+.body .social-media::after {
+    content: '→';
+    font-size: 1.5em;
+    margin-left: .4em;
+    margin-right: .4em;
+    transition: margin .2s ease-in;
+}
+
+/* When a mouse is being enters the text area */
+.body .social-media:hover { color: var(--media-icon-color) }
+.body .social-media:hover::after { margin-left: .8em; margin-right: 0; }
