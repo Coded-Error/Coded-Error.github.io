@@ -20,22 +20,48 @@ html, body { height: 100vh;  max-width: 100%; }
 
 /* ScrollBar */
 
-::-webkit-scrollbar {
-    width: 10px;
+/* .wrap */
+.wrap::-webkit-scrollbar {
+    width: .5em;
 }
-
-::-webkit-scrollbar-track {
+.wrap::-webkit-scrollbar-track {
     box-shadow: inset 0 0 0.25em rgba(0, 0, 0, 0.5);
 }
-
-::-webkit-scrollbar-thumb {
-    border-radius: 5px;
+.wrap::-webkit-scrollbar-thumb {
+    border-radius: 5vw;
     background-color: rgba(0, 126, 175, 0.5);
     transition: background-color .2s ease-in;
 }
-
-::-webkit-scrollbar-thumb:hover {
+.wrap::-webkit-scrollbar-thumb:hover {
     background-color: rgba(0, 183, 255, 0.5);
+}
+
+/* .code-block */
+.code-block::-webkit-scrollbar {
+	width: 1vw
+}
+.code-block::-webkit-scrollbar-track {
+	box-shadow: none;
+}
+.code-block::-webkit-scrollbar-thumb {
+	border-radius: 5vw;
+	background-color: rgba(255, 255, 255, 0.5);
+    transition: background-color .2s ease-in;
+}
+.code-block::-webkit-scrollbar-thumb:hover {
+	background-color: rgb(255, 255, 255);
+}
+
+/* Repository Container */
+.repositories .container::-webkit-scrollbar { width: .4em; }
+.repositories .container::-webkit-scrollbar-track {
+	background-color: rgba(0, 0, 0, 0);
+	box-shadow: none;
+}
+.repositories .container::-webkit-scrollbar-thumb {
+	border-radius: 0;
+	background-color: rgb(27, 27, 27);
+	transition: none;
 }
 
 /* Background */
@@ -58,33 +84,31 @@ html, body { height: 100vh;  max-width: 100%; }
 
 .top-bar {
     width: 100vw;
-    height: 10vh;
+    height: 4em;
     background-color: #000;
     box-shadow: 0 0 10px #000;
     position: fixed; /* Make sure it sticks to the top at all times */
     top: 0;
     left: 0;
     z-index: 1030;
-    /* Set the .top-bar to have all it's items postioned at it's center */
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
 }
 
 .top-bar .content { /* make sure the elements have margins */
-    width: 70%;
     height: 100%;
+	margin: 0 15%;
 }
 
+.top-bar .brand::after { content: 'CodedError'; }
 .top-bar .brand {
+	user-select: none;
     float: left;
     height: 100%;
     display: flex;
     align-items: center;
     /* Text visuals */
+	font-family: 'Roboto';
     font-weight: 900;
-    font-size: 5vh;
+    font-size: 2.25em;
     text-decoration: none;
     color: inherit;
     transition: color .2s ease-in, text-shadow .2s ease-in; /* Think of the 'transition' property just like the TweenInfo.new() function */
@@ -95,25 +119,105 @@ html, body { height: 100vh;  max-width: 100%; }
     background-image: url('/assets/textures/web-icon.svg');
     background-position: 0 0;
     background-repeat: no-repeat;
-    height: 7vh;
-    width: 7vh;
+    height: 2.75rem;
+    width: 2.75rem;
     background-size: 100% 100%;
-    background-color: rgb(37, 37, 37);
+    background-color: rgb(50, 50, 50);
     border-radius: 100%;
     margin-right: 1vw;
     transition: box-shadow .2s ease-in;
 }
 
+.top-bar .dropdown {
+	user-select: none;
+	float: right;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.top-bar .github {
+	cursor: pointer; /* Change the cursor to a hand */
+	display: block;
+	background-image: url('/assets/textures/social-media-icons/github.svg');
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	height: 2.75rem;
+	width: 2.75rem;
+	background-size: 100% 100%;
+	background-color: rgb(100, 100, 100);
+	border-radius: 100%;
+	transition: .2s ease-in;
+}
+
 /* These are the property goals */
+.top-bar .github:hover { box-shadow: 0 0 10px rgb(0, 68, 124); background-color: #FFF; }
 .top-bar .brand:hover { color: rgb(0, 117, 219); text-shadow: 0 0 10px rgb(0, 68, 124); }
 .top-bar .brand:hover .logo { box-shadow: 0 0 10px rgb(0, 68, 124); }
 
+/* Repositories */
+
+.repositories { /* The background */
+	position: fixed;
+	top: 4.5em;
+	right: 15%;
+	z-index: 1000;
+	background-color: rgb(37, 37, 37);
+	border: solid .15em rgb(90, 90, 90);
+	box-shadow: 0 0 20px #000;
+	border-radius: .15em;
+	min-width: 150px;
+	max-width: 330px;
+	width: 25vw;
+	min-height: 2em;
+	max-height: 60vh;
+	height: auto;
+	padding: .5em .5em;
+}
+.repositories > a { /* Header */
+	font-weight: 900;
+	font-family: 'Roboto';
+	font-size: calc(12px + (22 - 12) * ((100vw - 505px) / (1090 - 505)));
+}
+.repositories .container { /* Scrolling Container */
+	padding: .25rem 0;
+	max-height: 50vh;
+	overflow: auto;
+}
+
+.repo { /* Repository info holder */
+	min-height: 1em;
+	max-width: 100%;
+	margin-top: .25em;
+	margin-right: .1em;
+	border-top: solid .15rem rgb(50, 50, 50);
+	padding: .25rem 0;
+	text-decoration: none;
+}
+.repo:last-child {
+	border-bottom: solid .15rem rgb(50, 50, 50);
+}
+
+.repo .name {
+	font-family: 'Roboto';
+	font-weight: 900;
+	transition: .2s ease-out;
+	font-size: calc( 8px + (15 - 8) * ((100vw - 505px ) / ( 1090 - 505 )));
+	text-decoration: none;
+}
+.repo p {
+	font-weight: 100;
+	font-family: 'Roboto';
+	font-size: calc( 4px + (10 - 4) * ((100vw - 505px) / (1090 - 505)));
+}
+
+.repo > .name:hover { text-decoration: underline; color: rgb(0, 157, 219); }
 /* Footer */
 
 .footer {
     position: relative;
     /*top: 10vh;*/
-    height: 10vh;
+    height: 4em;
     width: 100vw;
     background-color: #000;
     box-shadow: 0 0 10px #000;
@@ -135,13 +239,13 @@ html, body { height: 100vh;  max-width: 100%; }
 .footer .text {
     font-size: 1.1em;
     text-align: center;
-    font-weight: 500;
+    font-weight: 300;
 }
 
 .footer .text a[href] { /* Make sure it has a different style */
     text-decoration: none;
-    font-family: "Open Sans";
-    font-weight: 300;
+    font-family: "Roboto";
+    font-weight: 500;
     color: inherit;
 }
 
@@ -154,12 +258,12 @@ html, body { height: 100vh;  max-width: 100%; }
 /* Wrap */
 
 .wrap {
-    height: 90vh;
+    height: calc(100vh - 4em);
     width: 100vw;
     overflow-x: hidden;
     overflow-y: auto;
     position: relative;
-    top: 10vh;
+    top: 4em;
 }
 
 /* Content */
@@ -170,45 +274,146 @@ html, body { height: 100vh;  max-width: 100%; }
     min-height: 80vh;
     height: auto;
     max-width: 100vw;
-    /* Text */
-    text-align: justify;
     /* Display */
     display: flex;
     justify-content: center;
 }
 
 .body .content {
-    width: 70%;
+	margin: 0 15%;
     min-height: 100%;
     margin-top: 6.5vh;
 }
 
-.content-box {
+.body .content-box {
     background-color: rgb(28, 28, 28);
     /* Make it so that it has space between thetext */
-    padding-left: 0.65em;
-    padding-right: 0.65em;
-    padding-top: 0.75em;
-    padding-bottom: 0.75em;
+    padding: 0.8em 0.65em;
     border-radius: 0.4em; /* borer-radius acts like UICorners */
     /* Make it so that it has space between other elements */
-    margin-bottom: 6.5vh;
+    margin-bottom: 7.5vh;
+}
+
+.body .content-box:is(#section-header) {
+    margin-bottom: 2.5vh;
+}
+
+/* Blocks */
+
+/* .code-block*/
+.code-block {
+	display: flex;
+	justify-content: center;
+	overflow: auto;
+	/* Appearance */
+	background-color: rgb(22, 22, 22);
+	padding: 1.25em 1em;
+	/* Border */
+	border-style: solid;
+	border-radius: 1.5vh;
+	border-color: rgb(48, 48, 48);
+	border-width: .15em;
+	/* Clamp */
+	min-height: 1em;
+	max-height: 20vh;
+	height: auto;
+	/* Margin */
+	margin: 1.5em 10%;
+}
+
+/* .block */
+.label {
+	/* Display */
+	margin: 1.5em 5%;
+	/* Appearance */
+	background-color: rgb(34, 34, 34);
+	border: .15em solid #FFF;
+	border-left-width: .65em;
+	box-shadow: 0 0 .5em #000;
+}
+
+.label:is(.note) {
+	border-color: rgb(var(--header-color-a), var(--header-color-g), var(--header-color-b));
 }
 
 /* Text */
 
-* { font-family: "Roboto"; color: #FFF; }
+* { font-family: "Roboto"; color: #FFF; tab-size: 2em; }
 
-ul, ol { list-style-position: inside; } /* Make sure the lists' bullets stay within their respected container  */
+/* Make sure the lists' bullets stay within their respected container  */
+ul, ol { list-style-position: inside; margin: 1.1em 0; }
 
 h1, h1, h3, h4, h5, h6 { font-weight: 900; }
+b, *[href] { text-transform: capitalize; }
 
-.body a[href]:not(.social-media) { text-decoration: none; color: rgb(0, 157, 219); transition: text-shadow .2s ease-in; }
-.body a[href]:not(.social-media):hover { text-decoration: underline; text-shadow: 0 0 .25em rgb(0, 157, 219); }
-
+p { text-align: justify; }
+p, a, i, u, s, ol { font-family: 'Open Sans'; }
 .body .indent { text-indent: 3.25em; }
 
-/* Any libk to another website and/or window */
+/* Horizontal Lines */
+hr {
+    margin-top: .35em;
+    height: .25em;
+	border: none;
+}
+.body hr { background-color: rgb(47, 47, 47); }
+.repositories hr { background-color: rgb(80, 80, 80); }
+
+/* Block's Text */
+.code-block pre {
+	/* Appearance */
+	font-family: 'Consolas';
+	color: rgb(229, 227, 227);
+	/* Size */
+	height: 100%;
+	width: 100%;
+}
+.label #header {
+	display: block;
+	background-color: rgba(var(--header-color-a), var(--header-color-g), var(--header-color-b), .15);
+	padding: .5em 1.25em;
+	user-select: none;
+}
+.label p {
+	font-size: .85em;
+	padding: .9em 1.25em;
+}
+
+/* Make an anchor copy-anchor icon */
+h3 .anchor {
+    font-family: 'Open Sans';
+    text-decoration: none;
+    font-weight: 300;
+    margin-left: .45rem;
+    margin-right: .45rem;
+    position: relative;
+    transition: .4s ease;
+    /* Make it non-selectable */
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+    /* What we will transition */
+    color: rgb(80, 80, 80);
+    bottom: -1em;
+    opacity: 0;
+}
+
+h3:hover .anchor {
+    bottom: 0;
+    opacity: 1;
+}
+
+h3 .anchor:hover {
+    color: rgb(0, 117, 219);
+}
+
+/* Others */
+.body a[href]:not(.anchor) { font-family: 'Roboto'; font-weight: 900; }
+.body a[href]:not(.social-media):not(.anchor) { text-decoration: none; color: #FFF; transition: .2s ease-in; }
+.body a[href]:not(.social-media):not(.anchor):hover { text-decoration: underline; color: rgb(0, 157, 219) }
+
+/* Any link to another website and/or window */
 .body a[href^="http"]:not(.social-media)::after {
     content: '';
     height: auto;
@@ -226,11 +431,14 @@ h1, h1, h3, h4, h5, h6 { font-weight: 900; }
 
 /* Any Social Media Link */
 .body .social-media {
+    display: block;
+    width: max-content;
     font-weight: 900;
     text-decoration: none;
     transition: color .2s ease-in;
     color: rgb(148, 148, 148);
-    padding: .5em 0 .5em 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 .body .social-media::before {
     content: '';
@@ -252,3 +460,12 @@ h1, h1, h3, h4, h5, h6 { font-weight: 900; }
 /* When a mouse is being enters the text area */
 .body .social-media:hover { color: var(--media-icon-color) }
 .body .social-media:hover::after { margin-left: .8em; margin-right: 0; }
+
+/* Media Objects */
+
+/* Remove The ::after for the brand if the screen is at a certain width */
+@media only screen and (max-width: 505px) {
+	.top-bar .brand::after {
+		content: '';
+	}
+}

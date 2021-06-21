@@ -1,98 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CodedError | Website</title>
-        <!-- STYLESHEETS -->
-        <link rel="stylesheet" type="text/css" href="/assets/css/base.css">
-        <!-- FAVICONS -->
-        <link rel="shortcut icon" type="image/ico" sizes="256x256" href="/assets/textures/favicon@3x.ico">
-    </head>
-    <body>
-        <!-- .back-ground: The actual background of the site    -->
-        <div class="back-ground"></div>
-        <!-- .top-bar: The top bar of the site. This will be    -->
-        <!-- fixed to the top of the user viewport/desktop.     -->
-        <div class="top-bar">
-            <div class="content">
-                <a class="brand" href="/">
-                    <span class="logo"></span>
-                    CodedError
-                </a>
-            </div>
-        </div>
-        <!-- .wrap: This will containt most of the website's    -->
-        <!-- content. The reason for the element is due to a    -->
-        <!-- bug where the scroll bar is shown below the        -->
-        <!-- .top-bar element.                                  -->
-        <div class="wrap">
-            <!-- .content: This will take up 80% of the website's   -->
-            <!-- height and will contain our content.               -->
-            <div class="body">
-                <div class="content">
-                    <div class="content-box">
-                        <h1>Stylesheet</h1>
-                    </div>
-                    <div class="content-box">
-                        <h2>Headers</h2>
-                    </div>
-                    <div class="content-box">
-                        <h1>Header 1</h1>
-                        <h2>Header 2</h2>
-                        <h3>Header 3</h3>
-                        <h4>Header 4</h4>
-                        <h5>Header 5</h5>
-                        <h6>Header 6</h6>
-                    </div>
-                    <div class="content-box">
-                        <h2>Text Elements</h2>
-                    </div>
-                    <div class="content-box">
-                        <ul>
-                            <li><b>Bold Text</b></li>
-                            <li><a>Normal Text</a></li>
-                            <li><i>Italic Text</i></li>
-                            <li><u>Underlined Text</u></li>
-                            <li><s>Strikitrhough Text</s></li>
-                        </ul>
-                    </div>
-                    <div class="content-box">
-                        <h2>Lists</h2>
-                    </div>
-                    <div class="content-box">
-                        <a>Unordered Lists:</a>
-                        <ul>
-                            <li>Item 1</li>
-                            <li>Item 2</li>
-                            <li>Item 3</li>
-                        </ul>
-                        <br>
-                        <a>Ordered Lists:</a>
-                        <ol>
-                            <li>Item 1</li>
-                            <li>Item 2</li>
-                            <li>Item 3</li>
-                        </ol>
-                    </div>
-                    <div class="content-box"><h2>Links</h2></div>
-                    <!-- external links: Any text element with an exertnl   -->
-                    <!-- will have a custom style to show that it is an     -->
-                    <!-- external link. External links are: -->
-                    <div class="content-box">
-                        <p><a href="https://youtu.be/dQw4w9WgXcQ">Here</a> is a <i>Hyperlink</i></p><br>
-                        <p>Here is another <a href="/" target="_blank">Link</a> to the current website, but to another window</p><br>
-                        <a class="social-media" href="https://roblox.com" style="--media-icon-color: rgb(255, 255, 255); --media-icon-link: url('/assets/textures/social-media-icons/roblox.svg');">Social Media Link</a>
-                    </div>
-                </div>
-            </div>
-            <!-- .footer: This will be the footer of the website.   -->
-            <div class="footer">
-                <div class="content">
-                    <p class="text">&COPY; <a href="/">CodedError</a> 2021</p>
-                </div>
-            </div>
-        </div>
-    </body>
+	<head>
+		<meta charset="ASCII">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>CodedError | Website</title>
+		<!-- STYLESHEETS -->
+		<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+		<!-- FAVICONS -->
+		<link rel="shortcut icon" type="image/ico" sizes="256x256" href="/assets/textures/favicon@3x.ico">
+		<!-- SCRIPTS -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" id="jQuery"></script>
+		<script type="module" src="/assets/js/base.js" id="jsBase"></script>
+	</head>
+	<body>
+		<!-- .back-ground: The actual background of the site    -->
+		<div class="back-ground"></div>
+		<!-- .top-bar: The top bar of the site. This will be    -->
+		<!-- fixed to the top of the user viewport/desktop.     -->
+		<div class="top-bar">
+			<div class="content">
+				<a class="brand" href="/">
+					<span class="logo"></span>
+				</a>
+				<div class="dropdown">
+					<span class="github" id="navbar:github" title="Repositories"></span>
+				</div>
+			</div>
+		</div>
+		<!-- .repositories: Displays all public repositories.   -->
+		<!-- Toggleable by clicking the github icon on the      -->
+		<!-- .top-bar.                                          -->
+		<div class="repositories">
+			<a>Repositories</a><hr>
+			<div class="container" id="reposList">
+			</div>
+		</div>
+		<!-- .wrap: This will containt most of the website's    -->
+		<!-- content. The reason for the element is due to a    -->
+		<!-- bug where the scroll bar is shown below the        -->
+		<!-- .top-bar element.                                  -->
+		<div class="wrap">
+			<!-- .content: This will take up 80% of the website's   -->
+			<!-- height and will contain our content.               -->
+			<div class="body">
+			<div class="content">
+					<div class="content-box" id="section-header">
+                    	<h1>Stylesheet</h1><hr>
+						<div class="label note" style="--header-color-a: 0; --header-color-g: 68; --header-color-b: 124;">
+							<b id="header">info</b>
+							<p>This is a Stylesheet reference for when I'm creating brand new content for the site. The content within this page may not be the final product.</p>
+						</div>
+					</div>
+					<div class="content-box">
+						<h3>Table of Contents</h3>
+						<hr><br>
+
+						<b>Text Elements:</b><br>
+						<ul>
+							<li><a href="#Headers">Header</a></li>
+							<li><a href="#Text%20Tags">Text Tags</a></li>
+							<li><a href="#Lists">Lists</a></li>
+							<li><a href="#Links">Links</a></li>
+							<li><a href="#Blocks">Blocks</a></li>
+						</ul>
+					</div>
+
+					<div class="content-box" id="section-header"><h2>Text Elements</h2></div>
+						<div class="content-box">
+
+						<h3 id="Headers">Headers<a class="anchor" href="#Headers">¶</a></h3>
+						<hr><br>
+
+						<h1>Header 1</h1>
+						<h2>Header 2</h2>
+						<h3>Header 3</h3>
+						<h4>Header 4</h4>
+						<h5>Header 5</h5>
+						<h6>Header 6</h6><br>
+
+						<h3 id="Text%20Tags">Text Tags<a class="anchor" href="#Text%20Tags">¶</a></h3>
+						<hr><br>
+
+						<ul>
+							<li><b>Bold Text</b></li>
+							<li><a>Normal Text</a></li>
+							<li><i>Italic Text</i></li>
+							<li><u>Underlined Text</u></li>
+							<li><s>Strikitrhough Text</s></li>
+						</ul><br>
+
+						<h3 id="Lists">Lists<a class="anchor" href="Lists">¶</a></h3>
+						<hr><br>
+
+						<a>Unordered Lists:</a>
+						<ul>
+							<li>Item 1</li>
+							<li>Item 2</li>
+							<li>Item 3</li>
+						</ul>
+
+						<a>Ordered Lists:</a>
+						<ol>
+							<li>Item 1</li>
+							<li>Item 2</li>
+							<li>Item 3</li>
+						</ol><br>
+
+						<h3 id="Links">Links<a class="anchor" href="#Links">¶</a></h3>
+						<hr><br>
+
+						<p><a href="/">Here</a> is a normal link to the current website</p>
+
+						<!-- External links: Any text element with an exertnl   -->
+						<!-- will have a custom style to show that it is an     -->
+						<!-- external link.                                     -->
+						<p><a href="https://youtu.be/dQw4w9WgXcQ">Here</a> is a <i>Hyperlink</i> to an external website.</p>
+						<p>Here is another <a href="/" target="_blank">Link</a> to the current website, but to another window</p>
+
+						<!-- .social-media: Elements with this class will have  -->
+						<!-- an icon before their line, as well as a different  -->
+						<!-- to differentiate themselves from other links.      -->
+						<a class="social-media" href="https://roblox.com" style="--media-icon-color: rgb(255, 255, 255); --media-icon-link: url('/assets/textures/social-media-icons/roblox.svg');">This is Social Media Link</a><br>
+
+						<h3 id="Blocks">Blocks<a class="anchor" href="#Links">¶</a></h3>
+						<hr><br>
+
+						<!-- .code-block: Elements which display code. It's     -->
+						<!-- important to note that the 'pre' element includes  -->
+						<!-- all whitespace within. This means the code editor's-->
+						<!-- whitespace is inlcuded in the final rendering.     -->
+						<p>Here is a <b>Code-Block</b>:</p>
+						<div class="code-block">
+<pre>
+local a = 1
+local b = 10
+local c = 100
+
+function abc()
+	return a * b + c
+end
+</pre>
+						</div>
+
+						<!-- .label: An element which displays as a banner that -->
+						<!-- informs the visistor. The color of each class is   -->
+						<!-- modifiable by editing --header-color-r, color-g,   -->
+						<!-- and color-b values. The values are a number within -->
+						<!-- the range of 1 - 255.                              -->
+						<a>Here are <b>Labels</b>:</a>
+						<div class="label">
+							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione nihil neque repellat reprehenderit rem voluptas, fugiat velit necessitatibus exercitationem dolores.</p>
+						</div>
+						<div class="label note" style="--header-color-a: 0; --header-color-g: 68; --header-color-b: 124;">
+							<b id="header">info</b>
+							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione nihil neque repellat reprehenderit rem voluptas, fugiat velit necessitatibus exercitationem dolores.</p>
+						</div>
+						<div class="label note" style="--header-color-a: 181; --header-color-g: 121; --header-color-b: 0;">
+							<b id="header">warning</b>
+							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione nihil neque repellat reprehenderit rem voluptas, fugiat velit necessitatibus exercitationem dolores.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .footer: This will be the footer of the website.   -->
+			<div class="footer">
+				<div class="content">
+					<p class="text">&COPY; <a href="/">CodedError</a> 2021</p>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
