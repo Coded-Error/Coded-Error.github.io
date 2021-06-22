@@ -7,6 +7,7 @@
 		<title>CodedError | Website</title>
 		<!-- STYLESHEETS -->
 		<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
+		<link rel="stylesheet" type="text/css" href="/assets/css/socia-media-icons.css">
 		<!-- FAVICONS -->
 		<link rel="shortcut icon" type="image/ico" sizes="256x256" href="/assets/textures/favicon@3x.ico">
 		<!-- SCRIPTS -->
@@ -24,7 +25,7 @@
 					<span class="logo"></span>
 				</a>
 				<div class="dropdown">
-					<span class="github" id="navbar:github" title="Repositories"></span>
+					<span class="github" id="github-button" title="Repositories"></span>
 				</div>
 			</div>
 		</div>
@@ -118,10 +119,15 @@
 						<p><a href="https://youtu.be/dQw4w9WgXcQ">Here</a> is a <i>Hyperlink</i> to an external website.</p>
 						<p>Here is another <a href="/" target="_blank">Link</a> to the current website, but to another window</p>
 
-						<!-- .social-media: Elements with this class will have  -->
+						<!-- .smedia: Elements with this class will have        -->
 						<!-- an icon before their line, as well as a different  -->
-						<!-- to differentiate themselves from other links.      -->
-						<a class="social-media" href="https://roblox.com" style="--media-icon-color: rgb(255, 255, 255); --media-icon-link: url('/assets/textures/social-media-icons/roblox.svg');">This is Social Media Link</a><br>
+						<!-- to differentiate themselves from other links. Use  -->
+						<!-- the content attribute for any text within the class-->
+						<a class="smedia" content="Social media" href="https://roblox.com/" media-type="roblox" style="
+							--data-r: 255;
+							--data-g: 255;
+							--data-b: 255;
+						"></a>
 
 						<h3 id="Blocks">Blocks<a class="anchor" href="#Links">¶</a></h3>
 						<hr><br>
@@ -166,7 +172,7 @@ end
 			<!-- .footer: This will be the footer of the website.   -->
 			<div class="footer">
 				<div class="content">
-					<p class="text">&COPY; <a href="/">CodedError</a> 2021</p>
+					<p class="text">&COPY; <a href="https://github.com/Coded-Error/">CodedError</a> 2021</p>
 				</div>
 			</div>
 		</div>

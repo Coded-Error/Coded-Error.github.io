@@ -1,0 +1,55 @@
+
+/* SOCIAL MEDIA LINKS | CSS */
+
+.body .smedia {
+	/* Display */
+	display: inline-block;
+	width: fit-content;
+	padding: 1em .5em;
+	/* Text */
+	transition: .25s ease;
+	color: rgb(148, 148, 148);
+	user-select: none;
+}
+.body .smedia span { color: inherit; }
+
+.body .smedia::before { /* Icon */
+	content: '';
+	background-size: 100% 100%;
+	background-position: 50% 50%;
+	/* The padding property Controls the size of the icon */
+	padding: .4rem 0;
+	padding-left: 2rem;
+	margin-right: .1rem;
+}
+
+/* Change the color on hover */
+.body .smedia:hover {
+	color: rgb(
+		var(--data-r),
+		var(--data-g),
+		var(--data-b)
+	);
+	text-shadow: 0 0 .2em rgb(
+		calc(var(--data-r) / 2),
+		calc(var(--data-g) / 2),
+		calc(var(--data-b) / 2)
+	);
+}
+
+/* Set the icon images */
+.body .smedia[media-type="roblox"]::before { background-image: url('/assets/textures/social-media-icons/roblox.svg'); }
+.body .smedia[media-type="discord"]::before { background-image: url('/assets/textures/social-media-icons/discord.svg'); }
+.body .smedia[media-type="twitter"]::before { background-image: url('/assets/textures/social-media-icons/twitter.svg'); }
+
+.body .smedia[media-type="github"]:hover {
+	text-shadow: 0 0 .2em #FFF, 0 0 .2em #FFF, 0 0 .2em #FFF, 0 0 .2em #FFF;
+}
+.body .smedia[media-type="github"]::before { background-image: url('/assets/textures/social-media-icons/github.svg'); background-size: 100% 100%; margin-right: .3rem; background-color: rgb(255, 255, 255); border-radius: 100%; }
+
+/* @media function */
+@media only screen and ( max-width: 505px ) {
+	.smedia span {
+		display: none;
+	}
+}
