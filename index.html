@@ -1,180 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="ASCII">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>CodedError | Website</title>
-		<!-- STYLESHEETS -->
-		<link rel="stylesheet" type="text/css" href="/assets/css/base.css">
-		<link rel="stylesheet" type="text/css" href="/assets/css/socia-media-icons.css">
-		<!-- FAVICONS -->
-		<link rel="shortcut icon" type="image/ico" sizes="256x256" href="/assets/textures/favicon@3x.ico">
-		<!-- SCRIPTS -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" id="jQuery"></script>
-		<script type="module" src="/assets/js/base.js" id="jsBase"></script>
-	</head>
-	<body>
-		<!-- .back-ground: The actual background of the site    -->
-		<div class="back-ground"></div>
-		<!-- .top-bar: The top bar of the site. This will be    -->
-		<!-- fixed to the top of the user viewport/desktop.     -->
-		<div class="top-bar">
-			<div class="content">
-				<a class="brand" href="/">
-					<span class="logo"></span>
-				</a>
-				<div class="dropdown">
-					<span class="github" id="github-button" title="Repositories"></span>
-				</div>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge;">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CodedError</title>
+	<!--  FaviCons  -->
+	<!-- .ico FILES -->
+	<link rel="icon" type="image/x-icon" sizes="16x16" href="/assets/textures/favicons/ico/favicon@1x.ico">
+	<link rel="icon" type="image/x-icon" sizes="32x32" href="/assets/textures/favicons/ico/favicon@2x.ico">
+	<link rel="icon" type="image/x-icon" sizes="64x64" href="/assets/textures/favicons/ico/favicon@3x.ico">
+	<link rel="icon" type="image/x-icon" sizes="96x96" href="/assets/textures/favicons/ico/favicon@4x.ico">
+	<link rel="icon" type="image/x-icon" sizes="192x192" href="/assets/textures/favicons/ico/favicon@5x.ico">
+	<!-- .png FILES -->
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/textures/favicons/png/favicon@1x.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/textures/favicons/png/favicon@2x.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="/assets/textures/favicons/png/favicon@3x.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/assets/textures/favicons/png/favicon@4x.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="/assets/textures/favicons/png/favicon@5x.png">
+	<!-- StyleSheet -->
+	<link rel="stylesheet" href="/assets/css/base.css">
+	<!-- Scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/assets/js/base.js" type="module"></script>
+</head>
+<body>
+	<div id="background"></div>
+
+	<!-- HEADER class :                                     -->
+	<!-- The bar at the top of the site. Fixed at the top   -->
+	<!-- of the browser's viewport. Used for navigation.    -->
+	<div class="header">
+		<div class="margin">
+			<div class="brand container" style="float: left;" id="_pseudo_bttn" href="/">
+				<span class="_logo"></span>
+			</div>
+			<div class="dropdown container" style="float: right;">
+				<span class="_repository_button" id="repos-button" title="Search for Repositories"></span>
 			</div>
 		</div>
-		<!-- .repositories: Displays all public repositories.   -->
-		<!-- Toggleable by clicking the github icon on the      -->
-		<!-- .top-bar.                                          -->
-		<div class="repositories">
-			<a>Repositories</a><hr>
-			<div class="container" id="reposList">
+	</div>
+
+	<div class="repos-backdrop" style="left: -200vw">
+		<div class="container-box">
+			<div class="search-box">
+				<input type="text" name="search-input" id="search-input" placeholder="Search for Repository name...">
+				<span class="line"></span>
+				<span class="search"></span>
 			</div>
+			<hr>
+			<div class="repos-list"></div>
 		</div>
-		<!-- .wrap: This will containt most of the website's    -->
-		<!-- content. The reason for the element is due to a    -->
-		<!-- bug where the scroll bar is shown below the        -->
-		<!-- .top-bar element.                                  -->
-		<div class="wrap">
-			<!-- .content: This will take up 80% of the website's   -->
-			<!-- height and will contain our content.               -->
-			<div class="body">
-			<div class="content">
-					<div class="content-box" id="section-header">
-                    	<h1>Stylesheet</h1><hr>
-						<div class="label note" style="--header-color-a: 0; --header-color-g: 68; --header-color-b: 124;">
-							<b id="header">info</b>
-							<p>This is a Stylesheet reference for when I'm creating brand new content for the site. The content within this page may not be the final product.</p>
-						</div>
-					</div>
-					<div class="content-box">
-						<h3>Table of Contents</h3>
-						<hr><br>
+	</div>
 
-						<b>Text Elements:</b><br>
-						<ul>
-							<li><a href="#Headers">Header</a></li>
-							<li><a href="#Text%20Tags">Text Tags</a></li>
-							<li><a href="#Lists">Lists</a></li>
-							<li><a href="#Links">Links</a></li>
-							<li><a href="#Blocks">Blocks</a></li>
-						</ul>
-					</div>
 
-					<div class="content-box" id="section-header"><h2>Text Elements</h2></div>
-						<div class="content-box">
-
-						<h3 id="Headers">Headers<a class="anchor" href="#Headers">¶</a></h3>
-						<hr><br>
-
-						<h1>Header 1</h1>
-						<h2>Header 2</h2>
-						<h3>Header 3</h3>
-						<h4>Header 4</h4>
-						<h5>Header 5</h5>
-						<h6>Header 6</h6><br>
-
-						<h3 id="Text%20Tags">Text Tags<a class="anchor" href="#Text%20Tags">¶</a></h3>
-						<hr><br>
-
-						<ul>
-							<li><b>Bold Text</b></li>
-							<li><a>Normal Text</a></li>
-							<li><i>Italic Text</i></li>
-							<li><u>Underlined Text</u></li>
-							<li><s>Strikitrhough Text</s></li>
-						</ul><br>
-
-						<h3 id="Lists">Lists<a class="anchor" href="Lists">¶</a></h3>
-						<hr><br>
-
-						<a>Unordered Lists:</a>
-						<ul>
-							<li>Item 1</li>
-							<li>Item 2</li>
-							<li>Item 3</li>
-						</ul>
-
-						<a>Ordered Lists:</a>
-						<ol>
-							<li>Item 1</li>
-							<li>Item 2</li>
-							<li>Item 3</li>
-						</ol><br>
-
-						<h3 id="Links">Links<a class="anchor" href="#Links">¶</a></h3>
-						<hr><br>
-
-						<p><a href="/">Here</a> is a normal link to the current website</p>
-
-						<!-- External links: Any text element with an exertnl   -->
-						<!-- will have a custom style to show that it is an     -->
-						<!-- external link.                                     -->
-						<p><a href="https://youtu.be/dQw4w9WgXcQ">Here</a> is a <i>Hyperlink</i> to an external website.</p>
-						<p>Here is another <a href="/" target="_blank">Link</a> to the current website, but to another window</p>
-
-						<!-- .smedia: Elements with this class will have        -->
-						<!-- an icon before their line, as well as a different  -->
-						<!-- to differentiate themselves from other links. Use  -->
-						<!-- the content attribute for any text within the class-->
-						<a class="smedia" content="Social media" href="https://roblox.com/" media-type="roblox" style="
-							--data-r: 255;
-							--data-g: 255;
-							--data-b: 255;
-						"></a>
-
-						<h3 id="Blocks">Blocks<a class="anchor" href="#Links">¶</a></h3>
-						<hr><br>
-
-						<!-- .code-block: Elements which display code. It's     -->
-						<!-- important to note that the 'pre' element includes  -->
-						<!-- all whitespace within. This means the code editor's-->
-						<!-- whitespace is inlcuded in the final rendering.     -->
-						<p>Here is a <b>Code-Block</b>:</p>
-						<div class="code-block">
-<pre>
-local a = 1
-local b = 10
-local c = 100
-
-function abc()
-	return a * b + c
-end
-</pre>
-						</div>
-
-						<!-- .label: An element which displays as a banner that -->
-						<!-- informs the visistor. The color of each class is   -->
-						<!-- modifiable by editing --header-color-r, color-g,   -->
-						<!-- and color-b values. The values are a number within -->
-						<!-- the range of 1 - 255.                              -->
-						<a>Here are <b>Labels</b>:</a>
-						<div class="label">
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione nihil neque repellat reprehenderit rem voluptas, fugiat velit necessitatibus exercitationem dolores.</p>
-						</div>
-						<div class="label note" style="--header-color-a: 0; --header-color-g: 68; --header-color-b: 124;">
-							<b id="header">info</b>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione nihil neque repellat reprehenderit rem voluptas, fugiat velit necessitatibus exercitationem dolores.</p>
-						</div>
-						<div class="label note" style="--header-color-a: 181; --header-color-g: 121; --header-color-b: 0;">
-							<b id="header">warning</b>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione nihil neque repellat reprehenderit rem voluptas, fugiat velit necessitatibus exercitationem dolores.</p>
-						</div>
-					</div>
+	<!-- CONTENT class :                                    -->
+	<!-- This will contain the site's content (shocking)    -->
+	<!-- apart from the '.header.'                          -->
+	<div class="content">
+		<div class="details">
+			<div class="left container">
+				<div class="carousel">
+					<span class="prev"></span>
+					<img src="/assets/textures/def_thumb.png" alt="Thumbnail 1" class="thumbnail" data-thumb-active="1">
+					<span class="next"></span>
 				</div>
 			</div>
-			<!-- .footer: This will be the footer of the website.   -->
-			<div class="footer">
-				<div class="content">
-					<p class="text">&COPY; <a href="https://github.com/Coded-Error/">CodedError</a> 2021</p>
-				</div>
+			<div class="right container">
+				<h1>Stylesheet</h1>
+				<p id="description">A template that dictates the look, feel, and design of a WebSite or WebPage.</p>
+
+				<button class="repo" id="_pseudo_bttn" href="https://github.com/Coded-Error/Coded-Error.github.io" target="_blank">
+					<span class="icon"></span>
+				</button>
 			</div>
 		</div>
-	</body>
+
+		<div class="main-content">
+			<h2 id="code-blocks" data-header-type="section_anchor">Code Blocks</h2>
+
+			<h4>Example:</h4>
+			<div class="code_block" data-language="lua">
+				<pre><span class="cmnt">--!strict</span>
+
+<span class="kwd">local</span> x = <span class="num">6.0</span>
+<span class="kwd">local</span> y = <span class="num">9</span>
+<span class="kwd">local</span> z = <span class="kwd">nil</span>
+
+<span class="kwd">function</span> foo()
+	<span class="kwd">return</span> <span class="glb">math</span>.<span class="glb">floor</span>(x * y)
+<span class="kwd">end</span></pre>
+			</div>
+
+			<h4>Code:</h4>
+			<div class="code_block" data-language="html">
+				<pre><span class="pun">&lt;</span><span class="kwd">div</span> <span class="prp">class</span>=<span class="val">"code_block"</span> <span class="prp">data-language</span>=<span class="val">[none|html|lua]</span><span class="pun">&gt;</span>
+	<span class="pun">&lt;</span><span class="kwd">pre</span><span class="pun">&gt;</span>CODE HERE<span class="pun">&lt;</span><span class="kwd">/pre</span><span class="pun">&gt;</span>
+<span class="pun">&lt;</span><span class="kwd">/div</span><span class="pun">&gt;</span></pre>
+			</div>
+
+			<hr>
+
+			<h2 id="Collapsable-Blocks" data-header-type="section_anchor">Collapsable Blocks</h2>
+			
+			<h4>Example:</h4>
+			<div class="block" data-block-type="info">
+				<div class="banner">
+					<span id="icon"></span>
+					<a class="label">Title</a>
+				</div>
+				<div class="block-content">
+					<p>The quick brown fox jumped over the lazy dog.</p>
+				</div>
+			</div>
+
+			<h4>Code:</h4>
+			<div class="code_block" data-language="html">
+				<span class="copy-button" id="copy-to-clipboard" title="Copy To Clipboard"></span>
+				<pre><span class="pun">&lt;</span><span class="kwd">div</span> <span class="prp">class</span>=<span class="val">"block"</span> <span class="prp">data-block-type</span>=<span class="val">[none|info|warning|error|tip]</span><span class="pun">&gt;</span>
+	<span class="|"><span class="pun">&lt;</span><span class="kwd">div</span> <span class="prp">class</span>=<span class="val">"banner"</span><span class="pun">&gt;</span></span>
+		<span class="pun">&lt;</span><span class="kwd">span</span> <span class="prp">id</span>=<span class="val">"icon"</span><span class="pun">&gt;</span><span class="pun">&lt;</span><span class="kwd">/span</span><span class="pun">&gt;</span>
+		<span class="pun">&lt;</span><span class="kwd">a</span> <span class="prp">class</span>=<span class="val">"label"</span><span class="pun">&gt;</span>Title<span class="pun">&lt;</span><span class="kwd">/a</span><span class="pun">&gt;</span>
+	<span class="pun">&lt;</span><span class="kwd">/div</span><span class="pun">&gt;</span>
+	<span class="pun">&lt;</span><span class="kwd">div</span> <span class="prp">class</span>=<span class="val">"block-content"</span><span class="pun">&gt;</span>
+		<span class="pun">&lt;</span><span class="kwd">p</span><span class="pun">&gt;</span>The quick brown fox jumped over the lazy dog.<span class="pun">&lt;</span><span class="kwd">/p</span><span class="pun">&gt;</span>
+	<span class="pun">&lt;</span><span class="kwd">/div</span><span class="pun">&gt;</span>
+<span class="pun">&lt;</span><span class="kwd">/div</span><span class="pun">&gt;</span></pre>
+			</div>
+
+			<hr>
+
+			<h2 id="pseudo-buttons" data-header-type="section_anchor">Pseudo Buttons</h2>
+			
+			<h4>Example:</h4>
+			<button href="https://youtu.be/dQw4w9WgXcQ" target="_blank" id="_pseudo_bttn" style="display: block; width: 15em; height: 3em; margin: 1em 5%;">Random Link</button>
+
+			<h4>Code:</h4>
+			<div class="code_block" data-language="html">
+				<pre><span class="pun">&lt;</span><span class="kwd">element</span> <span class="prp">href</span>=<span class="val">[URL]</span> <span class="prp">target</span>=<span class="val">[_blank|_self|_parent|_top|framename]</span> <span class="prp">id</span>=<span class="val">"_pseudo_bttn"</span><span class="pun">&gt;</span><span class="pun">&lt;</span><span class="kwd">/element</span><span class="pun">&gt;</span></pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- FOOTER class:                                      -->
+	<!-- The footer contains extra information about the    -->
+	<!-- page.                                              -->
+	<div class="footer">
+		<div class="margin">
+			<div class="__left container" style="float: left;">
+				<p>&copy; 2021 <b>CodedError</b>. All rights reserved</p>
+			</div>
+			<div class="__right container" style="float: right;">
+				<p>View on profile on <a href="https://github.com/CodedError/">GitHub</a></p>
+			</div>
+		</div>
+	</div>
+
+</body>
 </html>

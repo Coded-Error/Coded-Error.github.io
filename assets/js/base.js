@@ -1,110 +1,216 @@
 // Modules
-import * as GitHub from './GitHubApis.js';
+import * as github from './modules/GitHubApi.js';
 
-// Functions
-/// Fills the '.repo' class using GitHub's API
-function FillRepositories() {
-	GitHub.GetRepositories()
-		.then(data => {
-			var html = "";
+$(function () {
 
-			// Each Repository selection is formatted as follows:
-			// <div class="repo">
-			//     <a class="name">Repository Name</a>
-			//     <p>Repository Description</p>
-			// </div>
-			$.each(data, function (i, v) {
-				var _id = v.id;
-				var _url = v.html_url;
-				var _name = v.name;
-				var _desc = v.description;
+	// Variables
+	// / Information
+	var repositoiresShown = true;
+	var repositories = {};
 
-				html += `<div class="repo" id="repos:${_id}"> <a href="${_url}" class="name"> ${_name} </a>`
+	// / Elements
+	var bannerBlocks = $(".block")
+	var carousel = $(".carousel")
+	var pseudoBttn = $("* #_pseudo_bttn")
 
-				// Don't add a description if it doesn't have one
-				if (_desc)
-					html += `<p>${_desc}</p>`
+	// / / Buttons
+	var RepositoryButton = $("#repos-button");
+	var brandElem = $("#brand-redirect");
 
-				html += "</div>"
+	// / / Repositories
+	var reposBack = $(".repos-backdrop");
+	var reposList = $(".repos-list");
+	var reposeCont = $(".container-box")
+	var reposSearchInput = $("#search-input");
+	var reposSearchButton = $(".search");
+
+	// / / Any element with an anchor
+	var toApplyAnchors = $(`*[data-header-type='section_anchor']`);
+
+	// Functions
+
+	function DoRepositorySearch() {
+		var searchTerm = reposSearchInput.val();
+		var html = '';
+
+		searchTerm = searchTerm.toLowerCase();
+
+		// Enable Search Mode
+		reposList.html('');
+		reposSearchInput.blur();
+
+		// Loop trough array
+		$.each(repositories, (_, rep) => {
+			var name = rep.name;
+			var desc = rep.description;
+
+			// Check Variables
+			if (name.toLowerCase().includes(searchTerm)) {
+				html += FormatRepositoryAsHtml(rep);
+				return true
+			}
+
+			if (desc) {
+				if (desc.toLowerCase().includes(searchTerm)) {
+					html += FormatRepositoryAsHtml(rep);
+					return true
+				}
+			}
+		})
+
+		reposList.html(html)
+	}
+
+	function FormatRepositoryAsHtml(RepositoryData) {
+		var html = '';
+
+		var repId = RepositoryData.id;
+		var repUrl = RepositoryData.html_url;
+		var repName = RepositoryData.name;
+		var repDesc = RepositoryData.description;
+
+		html += `<div class="repository" id="repos:${repId}">`;
+		html += `<a href="${repUrl}" class="repos-name">${repName}</a>`;
+
+		if (repDesc)
+			html += `<p class="repos-description">${repDesc}</a>`;
+
+		html += `</div>`;
+
+		// Return HTML
+		return html
+	}
+
+	function CarouselInteraction() {
+		// Add to table
+		var prevBttn = carousel.find(".prev");
+		var nextBttn = carousel.find(".next");
+		var thumbs = [];
+		var curIndex = 0;
+
+		carousel.children(".thumbnail").each((_, elem) => {
+			thumbs.push($(elem));
+		})
+
+		if (thumbs.length > 1) {
+			nextBttn.click(() => {
+				thumbs[curIndex].attr('data-thumb-active', () => null)
+
+				curIndex++; // Add index
+
+				if (curIndex >= thumbs.length)
+					curIndex -= thumbs.length;
+
+				thumbs[curIndex].attr('data-thumb-active', () => 1)
 			})
 
-			$("#reposList").html(html)
-		})
-}
+			prevBttn.click(() => {
+				thumbs[curIndex].attr('data-thumb-active', () => null)
 
-function isHidden(element) {
-	return element.is(":visible")
-}
+				curIndex--; // Subtract Index
 
-/// Toggles the '.repositories' class when the 'navbar:github' button is clicked
-function OnGithubNavbarClick() {
-	$(".repositories").toggle()
-}
-/// Activates if the mouse clicks outside the '.repositories' element
-function OnOutsideGithubClick(e) {
-	// Element
-	var element = $(".repositories")
+				if (curIndex < 0)
+					curIndex = (thumbs.length - 1);
 
-	// Check if the Element is Visisble
-	if (isHidden(element)) {
-		// if the target of the click isn't the container nor a descendant of the container
-		if (!element.is(e.target) && element.has(e.target).length === 0)
-			OnGithubNavbarClick()
+				thumbs[curIndex].attr('data-thumb-active', () => 1)
+			})
+		} else {
+			if (prevBttn) prevBttn.remove();
+			if (nextBttn) nextBttn.remove();
+
+			thumbs = null;
+		}
 	}
-}
 
-/// Adds a '<span'> tag to all '.smedia' classes
-function AddMediaTags() {
-	var _class = $(".smedia")
+	// Fill repositories list
+	function FillRepositories() {
+		github.GetRepositories()
+			.then((data) => {
+				repositories = data;
 
-	_class.each((_, _elem) => {
-		// Covert DOM Element to JQuery Element
-		_elem = $(_elem)
+				var html = '';
 
-		// Create add-on HTML; add it
-		var _html = $('<span>' + _elem.attr("content") + '</span>')
-		_elem.append(_html)
+				$.each(data, (_, repository) => { html += FormatRepositoryAsHtml(repository) });
+				reposList.html(html);
+			})
+	}
+
+	// Apply all anchors
+	function ApplyAnchorElements() {
+		$.each(toApplyAnchors, (_, element) => {
+			element = $(element)
+			element.append(`<a href="#${element.attr('id')}" class="anchor">¶</a>`);
+		})
+	}
+
+	// Initiate
+
+	FillRepositories();
+	ApplyAnchorElements();
+	CarouselInteraction();
+
+	// Connect
+	// / Redirect
+	brandElem.click(DoRepositorySearch);
+
+	// / Repository Searching
+	reposSearchButton.click()
+
+	reposSearchInput.on('keyup', (e) => {
+		if (e.key === 'enter' || e.keyCode === 13)
+			DoRepositorySearch()
 	})
-}
 
-function ApplyCopyEvent(_, _elem) {
-	// Convert
-	_elem = $(_elem)
+	// / Toggle Repository View
+	RepositoryButton.click(() => {
+		// Invert boolean
+		repositoiresShown = !repositoiresShown;
 
-	// Variables
-	var _html = $(`<span class="copy-button" title="Copy To Clipboard"></span>`)
+		// Get the position
+		var leftPosition = repositoiresShown ? '200vw' : '0px';
 
-	_elem.append(_html)
-	/// This actually Copies to the Clipboard
-	_html.click(() => {
-		var text = _elem.text(); // Get the Text
-		navigator.clipboard.writeText(text) // Prevously an unnecessary large block of code: shortened to a single line
+		// Set the position
+		reposBack.css({
+			left: leftPosition
+		});
+	});
+
+	$(document).mouseup((e) => {
+		if (!repositoiresShown) {
+			if (!reposeCont.is($(e.target)) && reposeCont.has($(e.target)).length === 0) {
+				repositoiresShown = !repositoiresShown;
+
+				reposBack.css({
+					left: '200vw',
+				});
+			}
+		}
 	})
-}
 
-/// Activates once the document loads
-function OnDocumentLoad() {
+	// / Apply Dropdwon Banners' Functionality
+	$.each(bannerBlocks, (_, elem) => {
+		const _elem = $(elem);
+		const bttn = _elem.find('.banner');
+		const cont = _elem.find('.block-content');
 
-	// Variables
-	/// Elements
-	var githubNavbar = $('#github-button')
-	var codeBlocks = $('.code-block')
+		bttn.click(() => {
+			bttn.toggleClass("active");
 
-	// Set Visibility
-	/// Hide
-	$(".repositories").hide()
+			if (bttn.hasClass("active"))
+				cont.css("max-height", cont.prop("scrollHeight") + "px");
+			else
+				cont.css("max-height", 0)
+		})
+	})
 
-	// Add Data
-	FillRepositories()
-	AddMediaTags()
+	pseudoBttn.each((_, elem) => {
+		elem = $(elem);
+		elem.click(() => {
+			var location = elem.attr('href');
+			var target = elem.attr('target');
 
-	// Connections
-	$(document).mouseup(OnOutsideGithubClick)
-	githubNavbar.click(OnGithubNavbarClick)
-	/// Apply the event for each '.code-block'
-	codeBlocks.each(ApplyCopyEvent)
+			window.open(location || document.location.href, target || "_self")
+		})
+	})
 
-}
-
-// Connections
-$(document).ready(OnDocumentLoad)
+})

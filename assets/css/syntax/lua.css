@@ -1,0 +1,7 @@
+
+.code_block[data-language="lua"] pre .kwd { color: #569cd6; }
+.code_block[data-language="lua"] pre .num { color: #8be6c4; }
+.code_block[data-language="lua"] pre .glb { color: #8cdcfe; }
+.code_block[data-language="lua"] pre .ste { color: #bd69eb; }
+.code_block[data-language="lua"] pre .str { color: #ce9178; }
+.code_block[data-language="lua"] pre .cmnt { color: #5a9b40; font-weight: 900; }

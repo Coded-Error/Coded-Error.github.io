@@ -1,0 +1,76 @@
+
+/* IMPORTED TO : base.css */
+
+.header .margin > *, .footer .margin > * { display: flex; align-items: center; justify-content: center; align-content: center; }
+.header .margin, .footer .margin {
+	height: 100%;
+	margin: 0 var(--site-margin);
+}
+
+.header .container, .footer .container {
+	height: 100%;
+}
+
+/* HEADER class */
+
+.header {
+	width: 100vw;
+	height: var(--site-header-height);
+	/* DISPLAY */
+	backdrop-filter: blur(var(--site-basic-blur));
+	-webkit-backdrop-filter: blur(var(--site-basic-blur));
+	background-color: rgb(50, 50, 50, 0.5);
+	/* BOTTOM BORDER */
+	border-bottom-color: rgba(var(--site-basic-border-color), 0.5);
+	border-bottom-style: solid;
+	border-bottom-width: var(--site-basic-border-width);
+	/* POSITIONING */
+	z-index: 1030;
+	position: fixed;
+	top: 0;
+}
+
+.header ._logo { background-image: url('/assets/textures/brand/logo-icon.svg'); margin-right: .25vw; }
+.header ._repository_button { background-image: url('/assets/textures/icons/github-outline.svg'); }
+
+.header ._logo::after, .header ._repository_button::after { content: ''; display: block; padding-bottom: 100%; }
+.header ._logo, .header ._repository_button {
+	width: 5vh;
+	/* DISPLAY */
+	display: block;
+	background-size: 90% 90%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	cursor: pointer;
+}
+
+/* HEADER animations */
+.header .container { transition: opacity .25s ease, text-shadow .25s ease, color .25s ease; }
+.header ._logo, .header ._repository_button { transition: inherit; }
+
+.header .brand:hover { color: var(--site-mouse-enter-color); text-shadow: 0 0 .25em var(--site-mouse-enter-shadow); }
+.header .brand:hover, .header ._repository_button:hover { opacity: .5; text-decoration: none; }
+
+/* HEADER pseudo-elements */
+.header .brand::after {
+	cursor: pointer;
+	content: 'CodedError';
+	color: currentColor;
+	font-size: 2.25vh !important;
+	font-weight: 900;
+}
+
+/* FOOTER class */
+
+.footer {
+	min-height: var(--site-header-height);
+	height: 0;
+	/* DISPLAY */
+	background-color: rgb(50, 50, 50);
+	/* TOP BORDER */
+	border-top-color: rgb(var(--site-basic-border-color));
+	border-top-style: solid;
+	border-top-width: var(--site-basic-border-width);
+	/* TEXT */
+	font-size: 11px
+}
