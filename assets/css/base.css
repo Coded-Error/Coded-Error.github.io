@@ -16,9 +16,9 @@
 
 /* IMPORT SECTIONS */
 
-@import url('/assets/css/_base/_header_footer.css');
-@import url('/assets/css/_base/_blocks_banner.css');
-@import url('/assets/css/_base/_content.css');
+@import url('/assets/css/globals/bars.css');
+@import url('/assets/css/globals/collapsable-blocks.css');
+@import url('/assets/css/globals/content-block.css');
 
 @import url('/assets/css/syntax/lua.css');
 @import url('/assets/css/syntax/html.css');
