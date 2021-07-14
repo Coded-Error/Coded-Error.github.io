@@ -63,14 +63,15 @@
 /* FOOTER class */
 
 .footer {
-	min-height: var(--site-header-height);
-	height: 0;
+	height: var(--site-header-height);
 	/* DISPLAY */
 	background-color: rgb(50, 50, 50);
 	/* TOP BORDER */
 	border-top-color: rgb(var(--site-basic-border-color));
 	border-top-style: solid;
 	border-top-width: var(--site-basic-border-width);
-	/* TEXT */
-	font-size: 11px
+	font-size: 11px;
 }
+
+.footer .__left { float: left; }
+.footer .__right { float: right; }

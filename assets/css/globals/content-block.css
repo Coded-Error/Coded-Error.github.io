@@ -189,7 +189,7 @@ body *[href] {
 
 /* Code Blocks */
 .content div.code_block > pre * { font-family: inherit; }
-.content div.code_block > pre { width: 100%; height: 100%; font-family: 'Consolas'; font-size: 14px; color: inherit !important; }
+.content div.code_block > pre { width: 100%; height: 100%; font-family: 'Consolas', 'Courier New'; font-size: 14px; color: inherit !important; }
 .content div.code_block {
 	margin: .5em 5% !important;
 	padding: 1em .5em;
